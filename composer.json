@@ -1,0 +1,27 @@
+{
+    "name": "aoeng/laravel-admin-banner",
+    "description": "banner",
+    "type": "library",
+    "require": {
+        "php": ">=7.4.0",
+        "laravel/framework": "^8.0.4"
+    },
+    "license": "TIM",
+    "authors": [
+        {
+            "name": "Xie",
+            "email": "764604973@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aoeng\\Laravel\\Banner\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aoeng\\Laravel\\Banner\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}
