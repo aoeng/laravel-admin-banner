@@ -1,14 +1,19 @@
 <?php
-namespace Aoeng\Laravel\Banner\Http\Controllers\Admin;
-
-use App\Models\Banner;
+namespace Aoeng\Laravel\Admin\Banner\Admin\Controllers;
+use Aoeng\Laravel\Admin\Banner\Models\Banner;
+use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Illuminate\Routing\Controller;
+use Encore\Admin\Show;
+use Encore\Admin\Controllers\AdminController;
 
-class BannerController extends Controller
+class BannerController extends AdminController
 {
-    public function index()
+    use HasResourceActions;
+
+    protected $title = '轮播图';
+
+    public function grid()
     {
         $grid = new Grid(new Banner());
 
@@ -22,6 +27,29 @@ class BannerController extends Controller
         $grid->column('updated_at', __('Updated at'));
 
         return $grid;
+    }
+
+
+    /**
+     * Make a show builder.
+     *
+     * @param mixed $id
+     * @return Show
+     */
+    protected function detail($id)
+    {
+        $show = new Show(Banner::findOrFail($id));
+
+        $show->field('id', __('Id'));
+        $show->field('type', __('Type'));
+        $show->field('picture', __('Picture'));
+        $show->field('path', __('Path'));
+        $show->field('sort', __('Sort'));
+        $show->field('is_display', __('Is display'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
+
+        return $show;
     }
 
 
